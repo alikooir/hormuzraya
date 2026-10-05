@@ -182,7 +182,7 @@ PRODUCTS = [
         "latin": "WEBINOVA.IR · AI SITE BUILDER",
         "url": "https://webinova.ir",
         "tagline": L("سایت‌ساز هوشمندی که با چند عکس و چند خط توضیح، وب‌سایت کامل کسب‌وکار می‌سازد", "an AI site builder that makes a complete business website from a few photos and a few lines"),
-        "for": L("برای کسب‌وکارهایی که هنوز سایت ندارند", "For businesses without a website yet"),
+        "for": L("ساخت وب‌سایت اختصاصی برای کسب‌وکارها، تحویل همان روز", "Custom websites for businesses, delivered the same day"),
         "seo_title": L("وبینوا | سایت‌ساز هوشمند؛ ساخت سایت کسب‌وکار با هوش مصنوعی به فارسی و انگلیسی",
                        "Webinova | AI site builder for business websites in Farsi or English"),
         "seo_desc": L("صنف را انتخاب کنید، عکس بارگذاری کنید و کسب‌وکارتان را توضیح دهید. هوش مصنوعی یک وب‌سایت کامل و آماده انتشار به فارسی یا انگلیسی می‌سازد.",
