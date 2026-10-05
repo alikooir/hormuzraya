@@ -188,12 +188,13 @@ def crumbs(pg, trail):
     return f'<nav aria-label="{"مسیر" if pg.lang == "fa" else "Breadcrumb"}"><ol class="crumbs">{"".join(items)}</ol></nav>'
 
 
-def page_hero(pg, trail, h1, lead, extra=""):
+def page_hero(pg, trail, h1, lead, extra="", after=""):
     return f"""<section class="phero"><div class="wrap">
 {crumbs(pg, trail)}
 {extra}
 <h1>{e(h1)}</h1>
 <p class="lead">{e(lead)}</p>
+{after}
 </div></section>"""
 
 
@@ -395,8 +396,8 @@ def platform(lang):
 def products_index(lang):
     pg = Page("products/", lang)
     t = pg.t
-    title = t(L("محصولات هرمز رایا | تجاروس، زبل، مپ‌مارکتینگ، خدمات نقشه و سایت‌ساز هوشمند",
-                "Hormoz Raya products | Tejaros, Zebel, MapMarketing, Map Services and AI Site Builder"))
+    title = t(L("محصولات هرمز رایا | تجاروس، زبل، مپ‌مارکتینگ، خدمات نقشه و وبینوا",
+                "Hormoz Raya products | Tejaros, Zebel, MapMarketing, Map Services and Webinova"))
     desc = t(L("محصولات هوشمند هرمز رایا برای صادرکنندگان، فروشگاه‌ها، تیم‌های فروش و کسب‌وکارهای محلی.",
                "Hormoz Raya's intelligent products for exporters, shops, sales teams and local businesses."))
     trail = [home_crumb(pg), (t(L("محصولات", "Products")), "products/")]
@@ -424,10 +425,16 @@ def product_page(p, lang):
     else:
         main_ld = {"@type": "SoftwareApplication", "name": p["name"][lang], "description": p["seo_desc"][lang], "applicationCategory": "BusinessApplication",
                    "operatingSystem": "Web", "publisher": {"@id": f"{DOMAIN}/#org"}, "inLanguage": ["fa", "en"], "url": abs_url(pg.path, lang)}
+    if p.get("url"):
+        main_ld["sameAs"] = [p["url"]]
     faq_ld = {"@type": "FAQPage", "mainEntity": [
         {"@type": "Question", "name": q[lang], "acceptedAnswer": {"@type": "Answer", "text": a[lang]}} for q, a in p["faq"]]}
     out = head(pg, t(p["seo_title"]), t(p["seo_desc"]), [org_ld(), breadcrumbs_ld(pg, trail), main_ld, faq_ld])
-    out += page_hero(pg, trail, f"{t(p['name'])}: {t(p['tagline'])}", t(p["summary"]), extra=f'<span class="for">{e(t(p["for"]))}</span>')
+    visit = ""
+    if p.get("url"):
+        domain = p["url"].split("//", 1)[1]
+        visit = f'<div class="cta"><a class="btn solid" href="{p["url"]}" rel="noopener">{e(t(L("ورود به", "Visit")))} <span class="mono">{domain}</span></a></div>'
+    out += page_hero(pg, trail, f"{t(p['name'])}: {t(p['tagline'])}", t(p["summary"]), extra=f'<span class="for">{e(t(p["for"]))}</span>', after=visit)
     problem = "".join(f"<p>{e(t(x))}</p>" for x in p["problem"])
     feats = "".join(f"<div><h3>{e(t(a))}</h3><p>{e(t(b))}</p></div>" for a, b in p["features"])
     who = '<ul class="who">' + "".join(f"<li>{e(t(x))}</li>" for x in p["audience"]) + "</ul>"

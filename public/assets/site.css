@@ -73,7 +73,7 @@ p{margin:0}
 /* inner page hero */
 .phero{border-bottom:1px solid var(--line);background:linear-gradient(var(--sea-soft),transparent 85%)}
 .phero .wrap{display:grid;gap:16px;padding-block:44px 52px}
-.phero h1{font-size:var(--step-4);max-width:22ch}
+.phero h1{font-size:clamp(1.9rem,4vw,2.7rem);max-width:28ch}
 .crumbs{display:flex;flex-wrap:wrap;gap:6px;font-size:.88rem;color:var(--muted);list-style:none;margin:0;padding:0}
 .crumbs li:not(:last-child)::after{content:"/";margin-inline-start:6px;opacity:.5}
 .crumbs a{color:var(--muted);text-decoration:none}
