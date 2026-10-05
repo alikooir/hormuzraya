@@ -417,8 +417,8 @@ def platform(lang):
     trail = [home_crumb(pg), (t(L("فناوری", "Technology")), "platform/")]
     out = head(pg, title, desc, [org_ld(), breadcrumbs_ld(pg, trail)])
     out += page_hero(pg, trail, t(L("رایا: هوشی که پشت محصولات ما کار می‌کند", "Raya: the intelligence behind our products")),
-                     t(L("به جای ساختن هر محصول داده‌محور از صفر، یک گراف هوشمند بازار ساخته‌ایم. تجاروس و مپ‌مارکتینگ قدرت گرفته از رایا هستند و هر بهبود در رایا، همه آن‌ها را بهتر می‌کند.",
-                         "Instead of building each data product from scratch, we built one market intelligence graph. Tejaros and MapMarketing are powered by Raya, and every improvement to Raya improves them all.")))
+                     t(L("به جای ساختن هر محصول داده‌محور از صفر، یک گراف هوشمند بازار ساخته‌ایم. تجاروس و لوکیشن‌مارکتینگ قدرت گرفته از رایا هستند و هر بهبود در رایا، همه آن‌ها را بهتر می‌کند.",
+                         "Instead of building each data product from scratch, we built one market intelligence graph. Tejaros and LocationMarketing are powered by Raya, and every improvement to Raya improves them all.")))
     principles = [
         (L("چند منبع، یک حقیقت", "Many sources, one truth"), L("داده از منابع متعدد جمع می‌شود و پیش از استفاده یکسان و بدون تکرار می‌شود.", "Data comes from many sources and is standardised and de-duplicated before use.")),
         (L("امتیاز بر پایه شواهد", "Scores from evidence"), L("هر رتبه و امتیاز به داده واقعی پشت آن برمی‌گردد.", "Every rank and score traces back to the real data behind it.")),
@@ -443,8 +443,8 @@ def platform(lang):
 def products_index(lang):
     pg = Page("products/", lang)
     t = pg.t
-    title = t(L("محصولات هرمز رایا | تجاروس، زبل، مپ‌مارکتینگ و وبینوا",
-                "Hormoz Raya products | Tejaros, Zebel, MapMarketing and Webinova"))
+    title = t(L("محصولات هرمز رایا | تجاروس، زبل، لوکیشن‌مارکتینگ و وبینوا",
+                "Hormoz Raya products | Tejaros, Zebel, LocationMarketing and Webinova"))
     desc = t(L("محصولات هوشمند هرمز رایا برای صادرکنندگان، فروشگاه‌ها، تیم‌های فروش و کسب‌وکارهای محلی.",
                "Hormoz Raya's intelligent products for exporters, shops, sales teams and local businesses."))
     trail = [home_crumb(pg), (t(L("محصولات", "Products")), "products/")]
