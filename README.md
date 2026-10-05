@@ -6,7 +6,7 @@ The whole site is one static file, `index.html`. It has no build step and no ser
 
 - Opens in Farsi (RTL). The header button switches to English (LTR), and the browser remembers the choice.
 - Follows the visitor's light or dark system setting.
-- Fonts load from Google Fonts (Reem Kufi, Vazirmatn, IBM Plex Mono), with system fonts as fallback.
+- Fonts load from Google Fonts (Vazirmatn, IBM Plex Mono), with system fonts as fallback.
 
 ## Editing content
 
