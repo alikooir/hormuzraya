@@ -87,7 +87,7 @@ def org_ld():
         "telephone": SITE["phone_tel"],
         "address": {"@type": "PostalAddress", "addressLocality": "Bandar Abbas", "addressRegion": "Hormozgan", "addressCountry": "IR",
                     "streetAddress": "Hormozgan Science and Technology Park"},
-        "description": "AI-driven market intelligence, lead generation and smart business solutions, from Bandar Abbas, Iran.",
+        "description": "Intelligent business solutions built with AI and data: products and custom solutions for trade, sales and small businesses, from Bandar Abbas, Iran.",
         "sameAs": ["https://hormuzraya.ir/"],
     }
 
@@ -166,7 +166,7 @@ def footer(pg):
 <div><h2>{e(t(L('خدمات', 'Services')))}</h2><ul>{svcs}</ul></div>
 <div><h2>{e(t(L('شرکت', 'Company')))}</h2><ul>
 <li><a href="{pg.link('about/')}">{e(t(L('درباره ما', 'About us')))}</a></li>
-<li><a href="{pg.link('platform/')}">{e(t(L('زیرساخت فناوری', 'Technology platform')))}</a></li>
+<li><a href="{pg.link('platform/')}">{e(t(L('فناوری رایا', 'Raya technology')))}</a></li>
 <li><a href="{pg.link('contact/')}">{e(t(L('تماس با ما', 'Contact us')))}</a></li>
 </ul></div>
 </div>
@@ -215,10 +215,19 @@ def product_card(pg, p, wide=False):
     t = pg.t
     return f"""<a class="card{' wide' if wide else ''}" href="{pg.link('products/' + p['slug'] + '/')}">
 <div class="head"><h3>{e(t(p['name']))}</h3><span class="latin">{e(p['latin'])}</span></div>
+{powered(pg) if p['built_on'] == 'raya' else ''}
 <span class="for">{e(t(p['for']))}</span>
 <p>{e(t(p['summary']))}</p>
 <span class="more">{e(t(L('بیشتر بدانید', 'Learn more')))} {'←' if pg.lang == 'fa' else '→'}</span>
 </a>"""
+
+
+def powered(pg):
+    return f'<span class="powered">{e(pg.t(L("قدرت گرفته از رایا", "Powered by Raya")))}</span>'
+
+
+def product_cards(pg):
+    return f'<div class="cards">{product_card(pg, PRODUCTS[0], wide=True)}{"".join(product_card(pg, p) for p in PRODUCTS[1:])}</div>'
 
 
 def engine_block(pg, key, link_products=True):
@@ -252,10 +261,10 @@ def sectors(pg):
 def home(lang):
     pg = Page("", lang)
     t = pg.t
-    title = t(L("هرمز رایا | راهکارهای هوشمند تجاری، تحلیل بازار و سرنخ فروش با هوش مصنوعی",
-                "Hormoz Raya | AI market intelligence, lead generation and smart business solutions"))
-    desc = t(L("راهکارهای هوشمند هرمز رایا، هسته فناور پارک علم و فناوری هرمزگان: شناخت بازیگران و روابط بازارها با هوش مصنوعی و تبدیل آن به مشتری، فروش و تصمیم.",
-               "Hormoz Raya Smart Solutions, a technology core at Hormozgan Science & Technology Park: AI that maps the players and relationships in markets and turns them into customers, sales and decisions."))
+    title = t(L("هرمز رایا | راهکارهای هوشمند کسب‌وکار با هوش مصنوعی و داده",
+                "Hormoz Raya | Intelligent business solutions with AI and data"))
+    desc = t(L("راهکارهای هوشمند هرمز رایا، هسته فناور پارک علم و فناوری هرمزگان: محصولات و راهکارهای اختصاصی مبتنی بر هوش مصنوعی و داده برای تجارت، فروش و کسب‌وکارهای کوچک.",
+               "Hormoz Raya Smart Solutions, a technology core at Hormozgan Science & Technology Park: AI and data products and custom solutions for trade, sales and small businesses."))
     ld = [org_ld(), {"@type": "WebSite", "@id": f"{DOMAIN}/#site", "url": f"{DOMAIN}/", "name": SITE["legal"][lang],
                      "inLanguage": lang, "publisher": {"@id": f"{DOMAIN}/#org"}}]
     out = head(pg, title, desc, ld)
@@ -265,45 +274,52 @@ def home(lang):
 <canvas id="chart" aria-hidden="true"></canvas>
 <div class="wrap">
 <span class="tag"><i></i>{e(t(SITE['park']))}</span>
-<h1>{t(L('بازار را مثل یک نقشه می‌خوانیم؛ <em>بازیگرانش، روابطش، فرصت‌هایش.</em>', 'We read markets like a chart: <em>their players, their links, their openings.</em>'))}</h1>
-<p class="lead">{e(t(L('راهکارهای هوشمند هرمز رایا با هوش مصنوعی، وب‌کاوی و تحلیل داده، اطلاعات پراکنده بازار را به محصولات و خدماتی تبدیل می‌کند که مشتری پیدا می‌کنند، فروش را ساده می‌کنند و تصمیم را دقیق‌تر.',
-    'Hormoz Raya Smart Solutions uses AI, web mining and data analysis to turn scattered market information into products and services that find customers, simplify selling and sharpen decisions.')))}</p>
-<div class="cta"><a class="btn solid" href="{pg.link('products/')}">{e(t(L('محصولات ما', 'Our products')))}</a>
-<a class="btn ghost" href="{pg.link('services/')}">{e(t(L('راهکار برای کسب‌وکار شما', 'A solution for your business')))}</a></div>
+<h1>{t(L('برای مسئله‌های کسب‌وکار، <em>راهکار هوشمند</em> می‌سازیم.', 'We build <em>intelligent solutions</em> to business problems.'))}</h1>
+<p class="lead">{e(t(L('راهکارهای هوشمند هرمز رایا با ترکیب هوش مصنوعی، داده و تجربه میدانی بازار، محصولات و راهکارهای اختصاصی می‌سازد: از تحلیل تجارت جهانی و یافتن خریدار خارجی تا ابزار فروش فروشگاه‌ها و ساخت وب‌سایت کسب‌وکارهای کوچک.',
+    'Hormoz Raya Smart Solutions combines AI, data and field experience of markets to build products and custom solutions: from analysing world trade and finding foreign buyers to sales tools for shops and websites for small businesses.')))}</p>
+<div class="cta"><a class="btn solid" href="{pg.link('services/')}">{e(t(L('راهکار برای کسب‌وکار شما', 'A solution for your business')))}</a>
+<a class="btn ghost" href="{pg.link('products/')}">{e(t(L('محصولات ما', 'Our products')))}</a></div>
 <div class="coords mono"><span>27.18°N 56.27°E</span><span>BANDAR ABBAS · STRAIT OF HORMUZ</span></div>
 </div></section>
 
 <section class="block"><div class="wrap split">
-<header><span class="eyebrow">{e(t(L('درباره ما', 'ABOUT')))}</span><h2>{e(t(L('یک موتور، چند محصول', 'One engine, many products')))}</h2></header>
+<header><span class="eyebrow">{e(t(L('درباره ما', 'ABOUT')))}</span><h2>{e(t(L('مسئله را می‌فهمیم، هوشمند حل می‌کنیم', 'We understand the problem, then solve it intelligently')))}</h2></header>
 <div class="stack"><div class="prose">
-<p>{e(t(L('اطلاعاتی که کسب‌وکارها برای فروش و توسعه بازار لازم دارند در منابع زیاد و پراکنده است. جمع کردن و تحلیل آن معمولاً دستی، کند و پرهزینه است و فرصت‌ها در همین فاصله از دست می‌روند.',
-    'The information businesses need to sell and grow sits in many scattered sources. Collecting and analysing it is usually manual, slow and expensive, and opportunities slip away in the meantime.')))}</p>
-<p>{e(t(L('هرمز رایا زیرساختی هوشمند ساخته است که بازیگران، روابط و فرصت‌های هر بازار را شناسایی و ارزیابی می‌کند. هر محصول ما یک کاربرد از همین زیرساخت است: از تجارت بین‌الملل و صادرات تا فروشگاه‌های کوچک و کسب‌وکارهای روی نقشه.',
-    'Hormoz Raya has built intelligent infrastructure that identifies and evaluates the players, relationships and opportunities in any market. Each of our products applies it, from international trade and export to small shops and businesses on the map.')))}</p>
+<p>{e(t(L('هرمز رایا هسته فناوری در پارک علم و فناوری هرمزگان است و زمینه کارش ارائه راهکارهای هوشمند تجاری و صنعتی است. هوش مصنوعی، داده‌کاوی و تحلیل داده را با سال‌ها تجربه عملی در بازاریابی صنعتی و تجارت بین‌الملل ترکیب می‌کنیم.',
+    'Hormoz Raya is a technology core at Hormozgan Science & Technology Park, working on intelligent commercial and industrial solutions. We combine AI, data mining and data analysis with years of hands-on experience in industrial marketing and international trade.')))}</p>
+<p>{e(t(L('هر کدام از محصولات ما از یک مسئله واقعی شروع شد: صادرکننده‌ای که خریدار پیدا نمی‌کرد، فروشگاهی که بین چند کانال فروش گم شده بود، تیم فروشی که فهرست مشتری بالقوه نداشت و کسب‌وکار کوچکی که وب‌سایت نداشت. هر مسئله را حل کردیم و راه‌حل را به محصول تبدیل کردیم.',
+    'Each of our products started as a real problem: an exporter who could not find buyers, a shop lost between several sales channels, a sales team with no prospect list, a small business with no website. We solved each one and turned the solution into a product.')))}</p>
+<p>{e(t(L('اگر مسئله شما در محصولات ما جا نمی‌گیرد، همان تیم و همان ابزارها برای شما راهکار اختصاصی می‌سازند.',
+    'If your problem does not fit one of our products, the same team and tools build a custom solution for you.')))}</p>
 <p><a href="{pg.link('about/')}">{e(t(L('بیشتر درباره ما', 'More about us')))}</a></p>
 </div>{pillars(pg)}</div>
 </div></section>
 
-<section class="block"><div class="wrap">
-<header class="shead"><span class="eyebrow">{e(t(L('محصولات', 'PRODUCTS')))}</span><h2>{e(t(L('از تجارت بین‌الملل تا مغازه سر کوچه', 'From international trade to the corner shop')))}</h2>
-<p class="muted">{e(t(L('هر محصول یک مسئله مشخص را برای یک گروه مشخص از مشتریان حل می‌کند.', 'Each product solves one specific problem for one specific group of customers.')))}</p></header>
-<div class="cards">{product_card(pg, PRODUCTS[0], wide=True)}{''.join(product_card(pg, p) for p in PRODUCTS[1:])}</div>
-</div></section>
-
 <section class="block"><div class="wrap split">
 <header><span class="eyebrow">{e(t(L('خدمات', 'SERVICES')))}</span><h2>{e(t(L('مسئله‌تان را بگویید', 'Tell us your problem')))}</h2>
-<p class="muted">{e(t(L('همان موتورها، داده‌ها و تیمی که محصولات ما را ساخته‌اند، در اختیار پروژه شما قرار می‌گیرند.', 'The engines, data and team behind our products are available for your project.')))}</p></header>
+<p class="muted">{e(t(L('همان فناوری، داده و تیمی که محصولات ما را ساخته‌اند، در اختیار پروژه شما قرار می‌گیرند.', 'The technology, data and team behind our products are available for your project.')))}</p></header>
 <div class="stack">
 <div class="svc lead-svc"><div><span class="k">{e(t(L('خدمت اصلی', 'Core service')))}</span><h2>{e(t(lead_svc['name']))}</h2></div>
 <div><p>{e(t(lead_svc['text']))}</p><a href="{pg.link('services/', anchor=lead_svc['id'])}">{e(t(L('جزئیات این خدمت', 'About this service')))}</a></div></div>
 <div class="svc-list">{svc_links}</div>
 </div></div></section>
 
+<section class="block"><div class="wrap">
+<header class="shead"><span class="eyebrow">{e(t(L('محصولات', 'PRODUCTS')))}</span><h2>{e(t(L('از تجارت بین‌الملل تا مغازه سر کوچه', 'From international trade to the corner shop')))}</h2>
+<p class="muted">{e(t(L('هر محصول یک مسئله مشخص را برای یک گروه مشخص از مشتریان حل می‌کند.', 'Each product solves one specific problem for one specific group of customers.')))}</p></header>
+{product_cards(pg)}
+</div></section>
+
 <section class="block"><div class="wrap split">
-<header><span class="eyebrow">{e(t(L('زیرساخت', 'PLATFORM')))}</span><h2>{e(t(L('موتورهایی که زیر همه محصولات کار می‌کنند', 'The engines under every product')))}</h2>
-<p class="muted">{e(t(L('هر بهبود در موتورها همه محصولات را بهتر می‌کند.', 'Every improvement to them improves every product.')))}</p>
-<p><a href="{pg.link('platform/')}">{e(t(L('درباره زیرساخت', 'About the platform')))}</a></p></header>
-<div class="stack">{engine_block(pg, 'raya')}{engine_block(pg, 'extractor')}</div>
+<header><span class="eyebrow">{e(t(L('فناوری', 'TECHNOLOGY')))}</span><h2>{e(t(L('قدرت گرفته از رایا', 'Powered by Raya')))}</h2>
+<p class="muted">{e(t(L('رایا گراف هوشمند بازار است که خودمان ساخته‌ایم و محصولات داده‌محور ما از آن قدرت گرفته‌اند.', 'Raya is the market intelligence graph we built. Our data products run on it.')))}</p>
+<p><a href="{pg.link('platform/')}">{e(t(L('درباره رایا', 'About Raya')))}</a></p></header>
+<div>{engine_block(pg, 'raya')}</div>
+</div></section>
+
+<section class="block"><div class="wrap">
+<header class="shead"><span class="eyebrow">{e(t(L('روش کار', 'HOW WE WORK')))}</span><h2>{e(t(L('از مسئله تا نتیجه قابل اندازه‌گیری', 'From problem to measurable result')))}</h2></header>
+{steps_list(pg, STEPS)}
 </div></section>
 {cta_band(pg)}
 """
@@ -328,8 +344,8 @@ def about(lang):
     'Hormoz Raya grew out of years of hands-on work in international trade, industrial marketing and the export of petroleum and mineral products. That daily work showed how much finding buyers, knowing competitors and understanding a market depend on manual searching, intermediaries and personal networks.')))}</p>
 <p>{e(t(L('پیش از نوشتن نرم‌افزار، همین روش را با ترکیب نیروی انسانی و ابزارهای هوش مصنوعی در بازارهای قیر و گوگرد آزمودیم و یک پایگاه داده تخصصی از فعالان این بازارها ساختیم که در توسعه بازار واقعی به کار رفت. نتیجه نشان داد این مدل کار می‌کند.',
     'Before writing software, we tested the method in the bitumen and sulphur markets, combining people with AI tools, and built a specialist database of those markets’ players that was used in real market development. It showed the model works.')))}</p>
-<p>{e(t(L('امروز همان منطق در قالب یک زیرساخت نرم‌افزاری درآمده است که بازیگران هر بازار را پیدا می‌کند و تصویر بزرگ آن را می‌سازد. محصولات ما، از تجاروس برای صادرکنندگان تا زبل برای فروشگاه‌های کوچک، روی همین زیرساخت ساخته شده‌اند.',
-    'Today that logic is software infrastructure that finds the players in any market and draws its big picture. Our products, from Tejaros for exporters to Zebel for small shops, are built on it.')))}</p>
+<p>{e(t(L('امروز همان منطق در رایا، گراف هوشمند بازار ما، زندگی می‌کند و تجاروس با تکیه بر آن صدها میلیون رکورد تجارت جهانی را تحلیل می‌کند. همان روش، یعنی شروع از یک مسئله واقعی و ساختن راه‌حل هوشمند برای آن، به محصولات دیگر ما برای فروشگاه‌ها، تیم‌های فروش و کسب‌وکارهای کوچک رسید.',
+    'Today that logic lives in Raya, our market intelligence graph, and Tejaros uses it to analyse hundreds of millions of world trade records. The same method, starting from a real problem and building an intelligent solution for it, led to our other products for shops, sales teams and small businesses.')))}</p>
 </div></div></section>
 
 <section class="block"><div class="wrap split">
@@ -363,29 +379,28 @@ def about(lang):
 def platform(lang):
     pg = Page("platform/", lang)
     t = pg.t
-    title = t(L("زیرساخت فناوری هرمز رایا | گراف هوشمند بازار رایا و موتور داده نقشه", "Hormoz Raya platform | Raya market graph and map data engine"))
-    desc = t(L("دو موتور داخلی هرمز رایا: رایا، گراف هوشمند بازیگران و روابط بازار، و استخراج‌گر داده نقشه برای داده کسب‌وکارهای محلی.",
-               "Hormoz Raya's two in-house engines: Raya, the intelligence graph of market players and relationships, and the map data extractor for local business data."))
-    trail = [home_crumb(pg), (t(L("زیرساخت", "Platform")), "platform/")]
+    title = t(L("رایا | گراف هوشمند بازار، فناوری پشت محصولات هرمز رایا", "Raya | The market intelligence graph behind Hormoz Raya products"))
+    desc = t(L("رایا گراف هوشمند بازیگران و روابط بازار است که هرمز رایا ساخته است: داده از منابع متعدد، ادغام شرکت‌ها، امتیازدهی فرصت‌ها و پیش‌بینی بازار.",
+               "Raya is Hormoz Raya’s intelligence graph of market players and relationships: data from many sources, entity merging, opportunity scoring and market forecasts."))
+    trail = [home_crumb(pg), (t(L("فناوری", "Technology")), "platform/")]
     out = head(pg, title, desc, [org_ld(), breadcrumbs_ld(pg, trail)])
-    out += page_hero(pg, trail, t(L("موتورهایی که زیر همه محصولات ما کار می‌کنند", "The engines under every product we make")),
-                     t(L("به جای ساختن هر محصول از صفر، دو موتور مشترک ساخته‌ایم. هر محصول یک کاربرد تازه از آن‌هاست و هر بهبود در موتورها همه محصولات را بهتر می‌کند.",
-                         "Instead of building each product from scratch, we built two shared engines. Each product is a new application of them, and every improvement to them improves every product.")))
+    out += page_hero(pg, trail, t(L("رایا: هوشی که پشت محصولات ما کار می‌کند", "Raya: the intelligence behind our products")),
+                     t(L("به جای ساختن هر محصول داده‌محور از صفر، یک گراف هوشمند بازار ساخته‌ایم. تجاروس و مپ‌مارکتینگ قدرت گرفته از رایا هستند و هر بهبود در رایا، همه آن‌ها را بهتر می‌کند.",
+                         "Instead of building each data product from scratch, we built one market intelligence graph. Tejaros and MapMarketing are powered by Raya, and every improvement to Raya improves them all.")))
     principles = [
         (L("چند منبع، یک حقیقت", "Many sources, one truth"), L("داده از منابع متعدد جمع می‌شود و پیش از استفاده یکسان و بدون تکرار می‌شود.", "Data comes from many sources and is standardised and de-duplicated before use.")),
         (L("امتیاز بر پایه شواهد", "Scores from evidence"), L("هر رتبه و امتیاز به داده واقعی پشت آن برمی‌گردد.", "Every rank and score traces back to the real data behind it.")),
         (L("محاسبه فقط وقتی لازم است", "Compute only when needed"), L("نتایج سنگین ذخیره می‌شوند و فقط وقتی داده تغییر کند دوباره محاسبه می‌شوند؛ پاسخ سریع و هزینه کمتر.", "Expensive results are cached and recomputed only when the data changes: faster answers, lower cost.")),
         (L("مستقل از مدل هوش مصنوعی", "Model-agnostic AI"), L("ارائه‌دهنده‌های مختلف هوش مصنوعی قابل جایگزینی‌اند، با مدل مناسب برای فارسی و انگلیسی.", "AI providers are interchangeable, with the right model for Farsi and for English.")),
-        (L("فارسی و انگلیسی", "Farsi and English"), L("همه موتورها از ابتدا برای کار با هر دو زبان طراحی شده‌اند.", "Every engine is designed for both languages from the start.")),
+        (L("فارسی و انگلیسی", "Farsi and English"), L("رایا از ابتدا برای کار با هر دو زبان طراحی شده است.", "Raya is designed for both languages from the start.")),
         (L("ماژولار", "Modular"), L("هر بازار یا کاربرد تازه یک ماژول روی همان زیرساخت است.", "Each new market or use is a module on the same infrastructure.")),
     ]
     feats = "".join(f"<div><h3>{e(t(a))}</h3><p>{e(t(b))}</p></div>" for a, b in principles)
     out += f"""<section class="block"><div class="wrap stack">
 {engine_block(pg, 'raya')}
-{engine_block(pg, 'extractor')}
 </div></section>
 <section class="block"><div class="wrap">
-<header class="shead"><span class="eyebrow">{e(t(L('اصول طراحی', 'DESIGN PRINCIPLES')))}</span><h2>{e(t(L('چطور ساخته شده‌اند', 'How they are built')))}</h2></header>
+<header class="shead"><span class="eyebrow">{e(t(L('اصول طراحی', 'DESIGN PRINCIPLES')))}</span><h2>{e(t(L('رایا چطور ساخته شده است', 'How Raya is built')))}</h2></header>
 <div class="features">{feats}</div>
 </div></section>
 {cta_band(pg)}
@@ -396,8 +411,8 @@ def platform(lang):
 def products_index(lang):
     pg = Page("products/", lang)
     t = pg.t
-    title = t(L("محصولات هرمز رایا | تجاروس، زبل، مپ‌مارکتینگ، خدمات نقشه و وبینوا",
-                "Hormoz Raya products | Tejaros, Zebel, MapMarketing, Map Services and Webinova"))
+    title = t(L("محصولات هرمز رایا | تجاروس، زبل، مپ‌مارکتینگ و وبینوا",
+                "Hormoz Raya products | Tejaros, Zebel, MapMarketing and Webinova"))
     desc = t(L("محصولات هوشمند هرمز رایا برای صادرکنندگان، فروشگاه‌ها، تیم‌های فروش و کسب‌وکارهای محلی.",
                "Hormoz Raya's intelligent products for exporters, shops, sales teams and local businesses."))
     trail = [home_crumb(pg), (t(L("محصولات", "Products")), "products/")]
@@ -405,10 +420,10 @@ def products_index(lang):
         {"@type": "ListItem", "position": i + 1, "url": abs_url(f"products/{p['slug']}/", lang), "name": p["name"][lang]} for i, p in enumerate(PRODUCTS)]}
     out = head(pg, title, desc, [org_ld(), breadcrumbs_ld(pg, trail), items])
     out += page_hero(pg, trail, t(L("محصولات ما", "Our products")),
-                     t(L("هر محصول یک مسئله مشخص را برای یک گروه مشخص از مشتریان حل می‌کند و روی زیرساخت مشترک ما ساخته شده است.",
-                         "Each product solves one specific problem for one specific group of customers, built on our shared infrastructure.")))
+                     t(L("هر محصول یک مسئله مشخص را برای یک گروه مشخص از مشتریان حل می‌کند.",
+                         "Each product solves one specific problem for one specific group of customers.")))
     out += f"""<section class="block"><div class="wrap">
-<div class="cards">{product_card(pg, PRODUCTS[0], wide=True)}{''.join(product_card(pg, p) for p in PRODUCTS[1:])}</div>
+{product_cards(pg)}
 </div></section>
 {cta_band(pg)}
 """
@@ -419,12 +434,8 @@ def product_page(p, lang):
     pg = Page(f"products/{p['slug']}/", lang)
     t = pg.t
     trail = [home_crumb(pg), (t(L("محصولات", "Products")), "products/"), (t(p["name"]), pg.path)]
-    if p["slug"] == "map-services":
-        main_ld = {"@type": "Service", "name": p["name"][lang], "description": p["seo_desc"][lang], "provider": {"@id": f"{DOMAIN}/#org"},
-                   "areaServed": "IR", "url": abs_url(pg.path, lang)}
-    else:
-        main_ld = {"@type": "SoftwareApplication", "name": p["name"][lang], "description": p["seo_desc"][lang], "applicationCategory": "BusinessApplication",
-                   "operatingSystem": "Web", "publisher": {"@id": f"{DOMAIN}/#org"}, "inLanguage": ["fa", "en"], "url": abs_url(pg.path, lang)}
+    main_ld = {"@type": "SoftwareApplication", "name": p["name"][lang], "description": p["seo_desc"][lang], "applicationCategory": "BusinessApplication",
+               "operatingSystem": "Web", "publisher": {"@id": f"{DOMAIN}/#org"}, "inLanguage": ["fa", "en"], "url": abs_url(pg.path, lang)}
     if p.get("url"):
         main_ld["sameAs"] = [p["url"]]
     faq_ld = {"@type": "FAQPage", "mainEntity": [
@@ -434,7 +445,7 @@ def product_page(p, lang):
     if p.get("url"):
         domain = p["url"].split("//", 1)[1]
         visit = f'<div class="cta"><a class="btn solid" href="{p["url"]}" rel="noopener">{e(t(L("ورود به", "Visit")))} <span class="mono">{domain}</span></a></div>'
-    out += page_hero(pg, trail, f"{t(p['name'])}: {t(p['tagline'])}", t(p["summary"]), extra=f'<span class="for">{e(t(p["for"]))}</span>', after=visit)
+    out += page_hero(pg, trail, f"{t(p['name'])}: {t(p['tagline'])}", t(p["summary"]), extra=f'<div class="meta"><span class="for">{e(t(p["for"]))}</span>{powered(pg) if p["built_on"] == "raya" else ""}</div>', after=visit)
     problem = "".join(f"<p>{e(t(x))}</p>" for x in p["problem"])
     feats = "".join(f"<div><h3>{e(t(a))}</h3><p>{e(t(b))}</p></div>" for a, b in p["features"])
     who = '<ul class="who">' + "".join(f"<li>{e(t(x))}</li>" for x in p["audience"]) + "</ul>"
@@ -443,9 +454,9 @@ def product_page(p, lang):
     built = ""
     if p["built_on"]:
         built = f"""<section class="block"><div class="wrap">
-<header class="shead"><span class="eyebrow">{e(t(L('زیرساخت', 'PLATFORM')))}</span><h2>{e(t(L('ساخته‌شده روی', 'Built on')))} {e(t(ENGINES[p['built_on']]['name']))}</h2></header>
+<header class="shead"><span class="eyebrow">{e(t(L('فناوری', 'TECHNOLOGY')))}</span><h2>{e(t(L('قدرت گرفته از رایا', 'Powered by Raya')))}</h2></header>
 {engine_block(pg, p['built_on'], link_products=False)}
-<p style="margin-top:16px"><a href="{pg.link('platform/')}">{e(t(L('درباره زیرساخت ما', 'About our platform')))}</a></p>
+<p style="margin-top:16px"><a href="{pg.link('platform/')}">{e(t(L('درباره رایا', 'About Raya')))}</a></p>
 </div></section>"""
     related = [s for s in SERVICES if s["related"] == p["slug"]]
     rel = ""

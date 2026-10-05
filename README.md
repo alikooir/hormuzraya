@@ -20,9 +20,9 @@ Main address: **https://hormozraya.ir**. `hormuzraya.ir` and the `www` names red
 Farsi pages are at `/`, English pages under `/en/`, with the same structure:
 
 - `/` home
-- `/products/` and one page per product: `tejaros`, `zebel`, `mapmarketing`, `map-services`, `webinova`
+- `/products/` and one page per product: `tejaros`, `zebel`, `mapmarketing`, `webinova`
 - `/services/` (each service has an anchor, such as `/services/#export-development`)
-- `/platform/` the Raya and map-data engines
+- `/platform/` Raya, the market intelligence graph
 - `/about/`
 - `/contact/`
 

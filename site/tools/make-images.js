@@ -16,7 +16,7 @@ function og(lang) {
 <div style="position:absolute;inset:0;padding:80px 90px;display:flex;flex-direction:column;gap:28px">
 <div style="display:flex;align-items:center;gap:18px"><div style="width:72px;height:72px">${svg}</div>
 <div style="font-size:40px;font-weight:800">${fa ? 'هرمز رایا' : 'Hormoz Raya'}</div></div>
-<div style="font-size:${fa ? 62 : 64}px;font-weight:900;line-height:1.35;max-width:900px">${fa ? 'بازار را مثل یک نقشه می‌خوانیم؛ <span style="color:#4fb6bb">بازیگرانش، روابطش، فرصت‌هایش.</span>' : 'We read markets like a chart: <span style="color:#4fb6bb">their players, their links, their openings.</span>'}</div>
+<div style="font-size:${fa ? 62 : 64}px;font-weight:900;line-height:1.35;max-width:900px">${fa ? 'برای مسئله‌های کسب‌وکار، <span style="color:#4fb6bb">راهکار هوشمند</span> می‌سازیم.' : 'We build <span style="color:#4fb6bb">intelligent solutions</span> to business problems.'}</div>
 <div style="margin-top:auto;font-size:26px;color:#93abad;display:flex;gap:14px;align-items:center"><span style="width:12px;height:12px;border-radius:50%;background:#e2694c;display:inline-block"></span>${fa ? 'راهکارهای هوشمند هرمز رایا · پارک علم و فناوری هرمزگان' : 'Hormoz Raya Smart Solutions · Hormozgan Science & Technology Park'}</div>
 </div></body>`;
 }
