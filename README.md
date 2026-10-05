@@ -48,4 +48,9 @@ After launch, add the site to Google Search Console and submit `https://hormozra
 
 ## Hosting
 
-Any static host works. On a Linux server with Nginx, use `deploy/nginx.conf` (the steps are at the top of the file).
+Any static host works. On a Linux server with Nginx:
+
+- **Behind ArvanCloud CDN (recommended):** use `deploy/nginx-arvan.conf`. Arvan handles HTTPS.
+- **Without a CDN:** use `deploy/nginx.conf`, which gets its own Let's Encrypt certificate.
+
+The steps are at the top of each file. After uploading a new version, purge the cache in the Arvan panel.
