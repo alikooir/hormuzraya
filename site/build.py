@@ -275,8 +275,8 @@ def home(lang):
 <div class="wrap">
 <span class="tag"><i></i>{e(t(SITE['park']))}</span>
 <h1>{t(L('برای مسئله‌های کسب‌وکار، <em>راهکار هوشمند</em> می‌سازیم.', 'We build <em>intelligent solutions</em> to business problems.'))}</h1>
-<p class="lead">{e(t(L('راهکارهای هوشمند هرمز رایا با ترکیب هوش مصنوعی، داده و تجربه میدانی بازار، محصولات و راهکارهای اختصاصی می‌سازد: از تحلیل تجارت جهانی و یافتن خریدار خارجی تا ابزار فروش فروشگاه‌ها و ساخت وب‌سایت کسب‌وکارهای کوچک.',
-    'Hormoz Raya Smart Solutions combines AI, data and field experience of markets to build products and custom solutions: from analysing world trade and finding foreign buyers to sales tools for shops and websites for small businesses.')))}</p>
+<p class="lead">{e(t(L('راهکارهای هوشمند هرمز رایا با ترکیب هوش مصنوعی، داده و مهندسی نرم‌افزار، محصولات و راهکارهای اختصاصی می‌سازد: از تحلیل تجارت جهانی و یافتن خریدار خارجی تا ابزار فروش فروشگاه‌ها و ساخت وب‌سایت کسب‌وکارهای کوچک.',
+    'Hormoz Raya Smart Solutions combines AI, data and software engineering to build products and custom solutions: from analysing world trade and finding foreign buyers to sales tools for shops and websites for small businesses.')))}</p>
 <div class="cta"><a class="btn solid" href="{pg.link('services/')}">{e(t(L('راهکار برای کسب‌وکار شما', 'A solution for your business')))}</a>
 <a class="btn ghost" href="{pg.link('products/')}">{e(t(L('محصولات ما', 'Our products')))}</a></div>
 <div class="coords mono"><span>27.18°N 56.27°E</span><span>BANDAR ABBAS · STRAIT OF HORMUZ</span></div>
