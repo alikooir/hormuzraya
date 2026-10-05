@@ -349,5 +349,5 @@ SECTORS = [
 PILLARS = [
     (L("هوش مصنوعی", "AI"), L("مدل‌های زبانی و یادگیری ماشین برای فهم، امتیازدهی و تولید محتوا، به فارسی و انگلیسی", "Language models and machine learning to understand, score and generate, in Farsi and English")),
     (L("داده و وب‌کاوی", "Data and web mining"), L("استخراج، پاک‌سازی، ادغام و به‌روزرسانی مداوم داده از منابع متعدد", "Extracting, cleaning, merging and continuously refreshing data from many sources")),
-    (L("مهندسی نرم‌افزار", "Software engineering"), L("ساخت محصولات وب، پنل‌ها، API و اتصال به سرویس‌های دیگر، از نمونه اولیه تا استقرار", "Web products, panels, APIs and integrations with other services, from prototype to deployment")),
+    (L("نرم‌افزار", "Software"), L("ساخت محصولات وب، پنل‌ها، API و اتصال به سرویس‌های دیگر، از نمونه اولیه تا استقرار", "Web products, panels, APIs and integrations with other services, from prototype to deployment")),
 ]

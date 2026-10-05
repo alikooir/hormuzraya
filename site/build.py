@@ -287,7 +287,7 @@ def home(lang):
 <div class="wrap">
 <span class="tag"><i></i>{e(t(SITE['park']))}</span>
 <h1>{t(L('برای مسئله‌های کسب‌وکار، <em>راهکار هوشمند</em> می‌سازیم.', 'We build <em>intelligent solutions</em> to business problems.'))}</h1>
-<p class="lead">{e(t(L('راهکارهای هوشمند هرمز رایا با ترکیب هوش مصنوعی، داده و مهندسی نرم‌افزار، محصولات و راهکارهای اختصاصی می‌سازد: از تحلیل تجارت جهانی و یافتن خریدار خارجی تا ابزار فروش فروشگاه‌ها و ساخت وب‌سایت کسب‌وکارهای کوچک.',
+<p class="lead">{e(t(L('راهکارهای هوشمند هرمز رایا با ترکیب هوش مصنوعی، داده و نرم‌افزار، محصولات و راهکارهای اختصاصی می‌سازد: از تحلیل تجارت جهانی و یافتن خریدار خارجی تا ابزار فروش فروشگاه‌ها و ساخت وب‌سایت کسب‌وکارهای کوچک.',
     'Hormoz Raya Smart Solutions combines AI, data and software engineering to build products and custom solutions: from analysing world trade and finding foreign buyers to sales tools for shops and websites for small businesses.')))}</p>
 <div class="cta"><a class="btn solid" href="{pg.link('services/')}">{e(t(L('راهکار برای کسب‌وکار شما', 'A solution for your business')))}</a>
 <a class="btn ghost" href="{pg.link('products/')}">{e(t(L('محصولات ما', 'Our products')))}</a></div>
@@ -297,7 +297,7 @@ def home(lang):
 <section class="block"><div class="wrap split">
 <header><span class="eyebrow">{e(t(L('درباره ما', 'ABOUT')))}</span><h2>{e(t(L('مسئله را می‌فهمیم، هوشمند حل می‌کنیم', 'We understand the problem, then solve it intelligently')))}</h2></header>
 <div class="stack"><div class="prose">
-<p>{e(t(L('هرمز رایا هسته فناوری در پارک علم و فناوری هرمزگان است و زمینه کارش ارائه راهکارهای هوشمند تجاری و صنعتی است. هوش مصنوعی، داده‌کاوی، تحلیل داده و مهندسی نرم‌افزار را ترکیب می‌کنیم تا مسئله‌های واقعی کسب‌وکارها را حل کنیم.',
+<p>{e(t(L('هرمز رایا هسته فناوری در پارک علم و فناوری هرمزگان است و زمینه کارش ارائه راهکارهای هوشمند تجاری و صنعتی است. هوش مصنوعی، داده‌کاوی، تحلیل داده و نرم‌افزار را ترکیب می‌کنیم تا مسئله‌های واقعی کسب‌وکارها را حل کنیم.',
     'Hormoz Raya is a technology core at Hormozgan Science & Technology Park, working on intelligent commercial and industrial solutions. We combine AI, data mining, data analysis and software engineering to solve real business problems.')))}</p>
 <p>{e(t(L('هر کدام از محصولات ما از یک مسئله واقعی شروع شد: صادرکننده‌ای که خریدار پیدا نمی‌کرد، فروشگاهی که بین چند کانال فروش گم شده بود، تیم فروشی که فهرست مشتری بالقوه نداشت و کسب‌وکار کوچکی که وب‌سایت نداشت. هر مسئله را حل کردیم و راه‌حل را به محصول تبدیل کردیم.',
     'Each of our products started as a real problem: an exporter who could not find buyers, a shop lost between several sales channels, a sales team with no prospect list, a small business with no website. We solved each one and turned the solution into a product.')))}</p>
@@ -342,7 +342,7 @@ def about(lang):
     pg = Page("about/", lang)
     t = pg.t
     title = t(L("درباره هرمز رایا | هسته فناور راهکارهای هوشمند در بندرعباس", "About Hormoz Raya | Intelligent solutions technology core in Bandar Abbas"))
-    desc = t(L("راهکارهای هوشمند هرمز رایا، هسته فناور مستقر در پارک علم و فناوری هرمزگان است که با هوش مصنوعی، داده و مهندسی نرم‌افزار، برای مسائل تجاری و صنعتی محصول و راهکار هوشمند می‌سازد.",
+    desc = t(L("راهکارهای هوشمند هرمز رایا، هسته فناور مستقر در پارک علم و فناوری هرمزگان است که با هوش مصنوعی، داده و نرم‌افزار، برای مسائل تجاری و صنعتی محصول و راهکار هوشمند می‌سازد.",
                "Hormoz Raya Smart Solutions is a technology core at Hormozgan Science & Technology Park that builds intelligent products and solutions for commercial and industrial problems with AI, data and software engineering."))
     trail = [home_crumb(pg), (t(L("درباره ما", "About us")), "about/")]
     out = head(pg, title, desc, [org_ld(), breadcrumbs_ld(pg, trail)])
