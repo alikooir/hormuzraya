@@ -324,9 +324,27 @@ STEPS = [
     (L("استقرار و سنجش", "Deploy and measure"), L("راهکار را در کار واقعی شما مستقر می‌کنیم و با نتیجه می‌سنجیم و بهتر می‌کنیم.", "We deploy it in your real operations, measure it against results and keep improving it.")),
 ]
 
-SECTORS = [L("فرآورده‌های نفتی و قیر", "Petroleum products and bitumen"), L("گوگرد و پتروشیمی", "Sulphur and petrochemicals"), L("مواد معدنی", "Minerals"),
-           L("مصالح ساختمانی", "Building materials"), L("صنایع غذایی و کشاورزی", "Food and agriculture"), L("حمل‌ونقل و لجستیک", "Shipping and logistics"),
-           L("خرده‌فروشی و فروشگاه‌های آنلاین", "Retail and online shops"), L("کسب‌وکارهای خدماتی محلی", "Local service businesses")]
+# Areas Hormoz Raya works in. Each links to the products (p:slug) or services (s:id) that serve it.
+SECTORS = [
+    (L("تجارت بین‌الملل و صادرات", "International trade and export"),
+     L("یافتن خریدار خارجی، تحلیل بازارهای هدف و توسعه بازار برای تولیدکنندگان و بازرگانان.", "Finding foreign buyers, analysing target markets and developing markets for manufacturers and traders."),
+     ["p:tejaros", "s:export-development"]),
+    (L("صنایع و شرکت‌های بزرگ", "Industry and large companies"),
+     L("تحلیل بازار، پایش رقبا و پنل‌های تصمیم‌یار برای صنایع، هلدینگ‌ها و نهادهای تجاری.", "Market analysis, competitor monitoring and decision panels for industry, holdings and trade bodies."),
+     ["s:market-research", "s:enterprise-panels"]),
+    (L("فروش و بازاریابی B2B", "B2B sales and marketing"),
+     L("فهرست مشتریان بالقوه و داده کسب‌وکارها برای تیم‌های فروش، پخش‌کنندگان و آژانس‌ها.", "Prospect lists and business data for sales teams, distributors and agencies."),
+     ["p:mapmarketing", "s:data-api"]),
+    (L("خرده‌فروشی و فروش آنلاین", "Retail and online selling"),
+     L("مدیریت یکپارچه سفارش، پیام و موجودی برای فروشگاه‌هایی که در چند کانال می‌فروشند.", "Unified orders, messages and stock for shops selling on several channels."),
+     ["p:zebel", "s:multichannel"]),
+    (L("کسب‌وکارهای کوچک و محلی", "Small and local businesses"),
+     L("وب‌سایت آماده با هوش مصنوعی و حضور درست روی اپلیکیشن‌های نقشه.", "AI-built websites and an accurate presence on map apps."),
+     ["p:webinova", "s:map-presence"]),
+    (L("مسئله‌های خاص سازمان‌ها", "Organisations’ own problems"),
+     L("خودکارسازی فرایندها، یکپارچه کردن داده‌های پراکنده و ابزارهای تصمیم‌یار اختصاصی.", "Process automation, bringing scattered data together and custom decision tools."),
+     ["s:custom-solutions"]),
+]
 
 PILLARS = [
     (L("هوش مصنوعی", "AI"), L("مدل‌های زبانی و یادگیری ماشین برای فهم، امتیازدهی و تولید محتوا، به فارسی و انگلیسی", "Language models and machine learning to understand, score and generate, in Farsi and English")),

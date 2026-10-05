@@ -253,7 +253,19 @@ def pillars(pg):
 
 
 def sectors(pg):
-    return '<ul class="who">' + "".join(f"<li>{e(pg.t(s))}</li>" for s in SECTORS) + "</ul>"
+    t = pg.t
+    svc = {s["id"]: s for s in SERVICES}
+    items = ""
+    for title, text, refs in SECTORS:
+        chips = ""
+        for ref in refs:
+            kind, key = ref.split(":")
+            if kind == "p":
+                chips += f'<a href="{pg.link("products/" + key + "/")}">{e(t(PRODUCT[key]["name"]))}</a>'
+            else:
+                chips += f'<a href="{pg.link("services/", anchor=key)}">{e(t(svc[key]["name"]))}</a>'
+        items += f'<div><h3>{e(t(title))}</h3><p>{e(t(text))}</p><div class="chips" style="margin-top:6px">{chips}</div></div>'
+    return f'<div class="features">{items}</div>'
 
 
 # ---------------------------------------------------------------- pages
@@ -388,7 +400,7 @@ def about(lang):
 </div></section>
 
 <section class="block"><div class="wrap">
-<header class="shead"><span class="eyebrow">{e(t(L('حوزه‌ها', 'SECTORS')))}</span><h2>{e(t(L('حوزه‌هایی که در آن کار کرده‌ایم', 'Sectors we have worked in')))}</h2></header>
+<header class="shead"><span class="eyebrow">{e(t(L('حوزه‌ها', 'SECTORS')))}</span><h2>{e(t(L('حوزه‌هایی که در آن فعالیم', 'Where we work')))}</h2></header>
 {sectors(pg)}
 </div></section>
 {cta_band(pg)}
