@@ -285,8 +285,8 @@ def home(lang):
 <section class="block"><div class="wrap split">
 <header><span class="eyebrow">{e(t(L('درباره ما', 'ABOUT')))}</span><h2>{e(t(L('مسئله را می‌فهمیم، هوشمند حل می‌کنیم', 'We understand the problem, then solve it intelligently')))}</h2></header>
 <div class="stack"><div class="prose">
-<p>{e(t(L('هرمز رایا هسته فناوری در پارک علم و فناوری هرمزگان است و زمینه کارش ارائه راهکارهای هوشمند تجاری و صنعتی است. هوش مصنوعی، داده‌کاوی و تحلیل داده را با سال‌ها تجربه عملی در بازاریابی صنعتی و تجارت بین‌الملل ترکیب می‌کنیم.',
-    'Hormoz Raya is a technology core at Hormozgan Science & Technology Park, working on intelligent commercial and industrial solutions. We combine AI, data mining and data analysis with years of hands-on experience in industrial marketing and international trade.')))}</p>
+<p>{e(t(L('هرمز رایا هسته فناوری در پارک علم و فناوری هرمزگان است و زمینه کارش ارائه راهکارهای هوشمند تجاری و صنعتی است. هوش مصنوعی، داده‌کاوی، تحلیل داده و مهندسی نرم‌افزار را ترکیب می‌کنیم تا مسئله‌های واقعی کسب‌وکارها را حل کنیم.',
+    'Hormoz Raya is a technology core at Hormozgan Science & Technology Park, working on intelligent commercial and industrial solutions. We combine AI, data mining, data analysis and software engineering to solve real business problems.')))}</p>
 <p>{e(t(L('هر کدام از محصولات ما از یک مسئله واقعی شروع شد: صادرکننده‌ای که خریدار پیدا نمی‌کرد، فروشگاهی که بین چند کانال فروش گم شده بود، تیم فروشی که فهرست مشتری بالقوه نداشت و کسب‌وکار کوچکی که وب‌سایت نداشت. هر مسئله را حل کردیم و راه‌حل را به محصول تبدیل کردیم.',
     'Each of our products started as a real problem: an exporter who could not find buyers, a shop lost between several sales channels, a sales team with no prospect list, a small business with no website. We solved each one and turned the solution into a product.')))}</p>
 <p>{e(t(L('اگر مسئله شما در محصولات ما جا نمی‌گیرد، همان تیم و همان ابزارها برای شما راهکار اختصاصی می‌سازند.',
@@ -329,38 +329,58 @@ def home(lang):
 def about(lang):
     pg = Page("about/", lang)
     t = pg.t
-    title = t(L("درباره هرمز رایا | هسته فناور هوش مصنوعی و تحلیل بازار در بندرعباس", "About Hormoz Raya | AI and market intelligence core in Bandar Abbas"))
-    desc = t(L("راهکارهای هوشمند هرمز رایا، هسته فناور مستقر در پارک علم و فناوری هرمزگان است که با هوش مصنوعی و داده، برای مسائل تجاری و صنعتی راهکار هوشمند می‌سازد.",
-               "Hormoz Raya Smart Solutions is a technology core at Hormozgan Science & Technology Park that builds AI and data solutions for commercial and industrial problems."))
+    title = t(L("درباره هرمز رایا | هسته فناور راهکارهای هوشمند در بندرعباس", "About Hormoz Raya | Intelligent solutions technology core in Bandar Abbas"))
+    desc = t(L("راهکارهای هوشمند هرمز رایا، هسته فناور مستقر در پارک علم و فناوری هرمزگان است که با هوش مصنوعی، داده و مهندسی نرم‌افزار، برای مسائل تجاری و صنعتی محصول و راهکار هوشمند می‌سازد.",
+               "Hormoz Raya Smart Solutions is a technology core at Hormozgan Science & Technology Park that builds intelligent products and solutions for commercial and industrial problems with AI, data and software engineering."))
     trail = [home_crumb(pg), (t(L("درباره ما", "About us")), "about/")]
     out = head(pg, title, desc, [org_ld(), breadcrumbs_ld(pg, trail)])
-    out += page_hero(pg, trail, t(L("ما برای مسئله مشتری راهکار هوشمند پیدا می‌کنیم", "We find intelligent solutions to our clients' problems")),
+    out += page_hero(pg, trail, t(L("ما برای مسئله مشتری راهکار هوشمند پیدا می‌کنیم", "We find intelligent solutions to our clients’ problems")),
                      t(L("راهکارهای هوشمند هرمز رایا هسته فناوری در پارک علم و فناوری هرمزگان است. زمینه کار ما ارائه راهکارهای هوشمند تجاری و صنعتی با هوش مصنوعی، داده‌کاوی و تحلیل داده است.",
                          "Hormoz Raya Smart Solutions is a technology core at Hormozgan Science & Technology Park. We build intelligent commercial and industrial solutions with AI, data mining and data analysis.")))
+    prod_list = "".join(f'<li><a href="{pg.link("products/" + p["slug"] + "/")}">{e(t(p["name"]))}</a>: {e(t(p["tagline"]))}</li>' for p in PRODUCTS)
+    principles = [
+        (L("از مسئله واقعی شروع می‌کنیم", "We start from a real problem"), L("پیش از هر فناوری، مسئله، مشتری و معیار موفقیت را دقیق می‌شناسیم.", "Before any technology, we pin down the problem, the customer and what success means.")),
+        (L("داده به جای حدس", "Data over guesswork"), L("پیشنهادها و تصمیم‌ها بر پایه داده واقعی و قابل بررسی است.", "Recommendations and decisions rest on real data that can be checked.")),
+        (L("یک بار می‌سازیم، بارها به کار می‌بریم", "Build once, use many times"), L("فناوری‌های مشترک مثل رایا را یک بار می‌سازیم و در محصولات و پروژه‌های مختلف به کار می‌گیریم؛ سریع‌تر و کم‌هزینه‌تر.", "We build shared technology such as Raya once and reuse it across products and projects: faster and cheaper.")),
+        (L("نتیجه را می‌سنجیم", "We measure results"), L("راهکار وقتی تمام است که در کار واقعی مشتری نتیجه بدهد.", "A solution is finished when it delivers results in the client’s real work.")),
+    ]
+    princ = "".join(f"<div><h3>{e(t(a))}</h3><p>{e(t(b))}</p></div>" for a, b in principles)
     out += f"""<section class="block"><div class="wrap split">
-<header><span class="eyebrow">{e(t(L('داستان ما', 'OUR STORY')))}</span><h2>{e(t(L('از بازار قیر تا زیرساخت هوشمند', 'From the bitumen market to intelligent infrastructure')))}</h2></header>
+<header><span class="eyebrow">{e(t(L('کیستیم', 'WHO WE ARE')))}</span><h2>{e(t(L('یک هسته فناور برای راهکارهای هوشمند', 'A technology core for intelligent solutions')))}</h2></header>
 <div class="prose">
-<p>{e(t(L('هرمز رایا حاصل چند سال کار عملی در تجارت بین‌الملل، بازاریابی صنعتی و صادرات فرآورده‌های نفتی و معدنی است. در همین کار روزمره دیدیم که پیدا کردن خریدار، شناخت رقبا و فهم یک بازار چقدر به جستجوی دستی، واسطه‌ها و روابط شخصی وابسته است.',
-    'Hormoz Raya grew out of years of hands-on work in international trade, industrial marketing and the export of petroleum and mineral products. That daily work showed how much finding buyers, knowing competitors and understanding a market depend on manual searching, intermediaries and personal networks.')))}</p>
-<p>{e(t(L('پیش از نوشتن نرم‌افزار، همین روش را با ترکیب نیروی انسانی و ابزارهای هوش مصنوعی در بازارهای قیر و گوگرد آزمودیم و یک پایگاه داده تخصصی از فعالان این بازارها ساختیم که در توسعه بازار واقعی به کار رفت. نتیجه نشان داد این مدل کار می‌کند.',
-    'Before writing software, we tested the method in the bitumen and sulphur markets, combining people with AI tools, and built a specialist database of those markets’ players that was used in real market development. It showed the model works.')))}</p>
-<p>{e(t(L('امروز همان منطق در رایا، گراف هوشمند بازار ما، زندگی می‌کند و تجاروس با تکیه بر آن صدها میلیون رکورد تجارت جهانی را تحلیل می‌کند. همان روش، یعنی شروع از یک مسئله واقعی و ساختن راه‌حل هوشمند برای آن، به محصولات دیگر ما برای فروشگاه‌ها، تیم‌های فروش و کسب‌وکارهای کوچک رسید.',
-    'Today that logic lives in Raya, our market intelligence graph, and Tejaros uses it to analyse hundreds of millions of world trade records. The same method, starting from a real problem and building an intelligent solution for it, led to our other products for shops, sales teams and small businesses.')))}</p>
+<p>{e(t(L('هرمز رایا تیمی از متخصصان هوش مصنوعی، داده، نرم‌افزار و کسب‌وکار است که در پارک علم و فناوری هرمزگان مستقر است. کار ما پیدا کردن راه‌حل هوشمند برای مسئله‌های واقعی کسب‌وکارهاست؛ مسئله‌هایی که با روش‌های دستی، کند و پرهزینه حل می‌شوند یا اصلاً حل نمی‌شوند.',
+    'Hormoz Raya is a team of AI, data, software and business specialists based at Hormozgan Science & Technology Park. Our work is finding intelligent solutions to real business problems: the ones that are solved slowly and expensively by hand, or not solved at all.')))}</p>
+<p>{e(t(L('مشتریان ما از شرکت‌های صادراتی و بازرگانی تا فروشگاه‌های کوچک و کسب‌وکارهای محلی را شامل می‌شوند. برای هر کدام یا یک محصول آماده داریم یا راهکار اختصاصی می‌سازیم.',
+    'Our clients range from exporters and trading companies to small shops and local businesses. For each we either have a ready product or build a custom solution.')))}</p>
 </div></div></section>
 
 <section class="block"><div class="wrap split">
-<header><span class="eyebrow">{e(t(L('چرا هرمزگان', 'WHY HORMOZGAN')))}</span><h2>{e(t(L('در دروازه تجارت ایران', 'At Iran’s gateway for trade')))}</h2></header>
+<header><span class="eyebrow">{e(t(L('چه می‌کنیم', 'WHAT WE DO')))}</span><h2>{e(t(L('محصولات آماده و راهکارهای اختصاصی', 'Ready products and custom solutions')))}</h2></header>
 <div class="prose">
-<p>{e(t(L('بندرعباس بزرگ‌ترین دروازه تجاری ایران و کنار تنگه هرمز است؛ جایی که نفت، فرآورده‌های نفتی، مواد معدنی و کالاهای صادراتی از آن به دنیا می‌روند. نزدیکی به این جریان تجارت و صنایع بزرگ استان، مسائل واقعی و مشتریان واقعی را جلوی چشم ما گذاشته است.',
-    'Bandar Abbas is Iran’s largest trade gateway, on the Strait of Hormuz, where oil, petroleum products, minerals and export goods leave for the world. Being close to that trade and to the province’s large industries puts real problems and real customers in front of us.')))}</p>
-<p>{e(t(L('استقرار در پارک علم و فناوری هرمزگان به ما امکان می‌دهد با صنایع، صادرکنندگان و نهادهای تجاری منطقه از نزدیک همکاری کنیم.',
-    'Being based at Hormozgan Science & Technology Park lets us work closely with the region’s industries, exporters and trade bodies.')))}</p>
+<p>{e(t(L('هر کدام از محصولات ما از یک مسئله مشخص شروع شده و حالا به‌عنوان یک سرویس مستقل در دسترس است:', 'Each of our products began with a specific problem and is now available as its own service:')))}</p>
+<ul>{prod_list}</ul>
+<p>{e(t(L('در کنار محصولات، همان تیم و فناوری را برای پروژه‌های اختصاصی به کار می‌گیریم: از راهکار هوشمند سفارشی و توسعه بازار صادراتی تا گزارش بازار، پنل سازمانی و داده و API.',
+    'Alongside our products, we put the same team and technology to work on custom projects: from bespoke intelligent solutions and export market development to market reports, enterprise panels, and data and API access.')))} <a href="{pg.link('services/')}">{e(t(L('خدمات ما', 'Our services')))}</a></p>
 </div></div></section>
+
+<section class="block"><div class="wrap">
+<header class="shead"><span class="eyebrow">{e(t(L('اصول ما', 'HOW WE THINK')))}</span><h2>{e(t(L('اصولی که با آن کار می‌کنیم', 'The principles we work by')))}</h2></header>
+<div class="features" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))">{princ}</div>
+</div></section>
 
 <section class="block"><div class="wrap">
 <header class="shead"><span class="eyebrow">{e(t(L('توانمندی‌ها', 'CAPABILITIES')))}</span><h2>{e(t(L('سه چیزی که با هم ترکیب می‌کنیم', 'Three things we combine')))}</h2></header>
 {pillars(pg)}
 </div></section>
+
+<section class="block"><div class="wrap split">
+<header><span class="eyebrow">{e(t(L('چرا هرمزگان', 'WHY HORMOZGAN')))}</span><h2>{e(t(L('در دروازه تجارت ایران', 'At Iran’s gateway for trade')))}</h2></header>
+<div class="prose">
+<p>{e(t(L('بندرعباس بزرگ‌ترین دروازه تجاری ایران و کنار تنگه هرمز است. نزدیکی به این جریان تجارت، صنایع بزرگ استان و کسب‌وکارهای منطقه، مسائل واقعی و مشتریان واقعی را جلوی چشم ما گذاشته است.',
+    'Bandar Abbas is Iran’s largest trade gateway, on the Strait of Hormuz. Being close to that trade, to the province’s large industries and to the region’s businesses puts real problems and real customers in front of us.')))}</p>
+<p>{e(t(L('استقرار در پارک علم و فناوری هرمزگان به ما امکان می‌دهد با صنایع، کسب‌وکارها و نهادهای منطقه از نزدیک همکاری کنیم.',
+    'Being based at Hormozgan Science & Technology Park lets us work closely with the region’s industries, businesses and institutions.')))}</p>
+</div></div></section>
 
 <section class="block" id="approach"><div class="wrap">
 <header class="shead"><span class="eyebrow">{e(t(L('روش کار', 'HOW WE WORK')))}</span><h2>{e(t(L('از مسئله تا نتیجه قابل اندازه‌گیری', 'From problem to measurable result')))}</h2></header>
@@ -368,7 +388,7 @@ def about(lang):
 </div></section>
 
 <section class="block"><div class="wrap">
-<header class="shead"><span class="eyebrow">{e(t(L('حوزه‌ها', 'SECTORS')))}</span><h2>{e(t(L('حوزه‌هایی که در آن تجربه داریم', 'Sectors we know')))}</h2></header>
+<header class="shead"><span class="eyebrow">{e(t(L('حوزه‌ها', 'SECTORS')))}</span><h2>{e(t(L('حوزه‌هایی که در آن کار کرده‌ایم', 'Sectors we have worked in')))}</h2></header>
 {sectors(pg)}
 </div></section>
 {cta_band(pg)}
