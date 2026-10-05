@@ -34,7 +34,8 @@ PRODUCTS = [
     {
         "slug": "tejaros",
         "name": L("تجاروس", "Tejaros"),
-        "latin": "TEJAROS · B2B",
+        "latin": "TEJAROS.IR · B2B",
+        "url": "https://tejaros.ir",
         "tagline": L("سامانه هوشمند اطلاعات و تحلیل تجاری", "Trade intelligence and B2B lead generation"),
         "for": L("برای تولیدکنندگان، بازرگانان و صادرکنندگان", "For manufacturers, traders and exporters"),
         "seo_title": L("تجاروس | شناسایی خریدار خارجی و تحلیل بازار صادراتی با هوش مصنوعی",
@@ -83,7 +84,8 @@ PRODUCTS = [
     {
         "slug": "zebel",
         "name": L("زبل", "Zebel"),
-        "latin": "ZEBEL · SMB",
+        "latin": "ZEBELAPP.IR · SMB",
+        "url": "https://zebelapp.ir",
         "tagline": L("داشبورد و صندوق پیام یکپارچه برای فروش چندکاناله", "One dashboard and inbox for multi-channel selling"),
         "for": L("برای فروشگاه‌ها و کسب‌وکارهای کوچک", "For shops and small businesses"),
         "seo_title": L("زبل | مدیریت فروش چندکاناله، سفارش و موجودی فروشگاه در یک پنل",
@@ -129,7 +131,8 @@ PRODUCTS = [
     {
         "slug": "mapmarketing",
         "name": L("مپ‌مارکتینگ", "MapMarketing"),
-        "latin": "MAPMARKETING · LEADS",
+        "latin": "MAPMARKETING.IR · LEADS",
+        "url": "https://mapmarketing.ir",
         "tagline": L("سرنخ فروش از نقشه، پرداخت به ازای هر سرنخ", "Sales leads from the map, paid per lead"),
         "for": L("برای تیم‌های فروش و بازاریابی", "For sales and marketing teams"),
         "seo_title": L("مپ‌مارکتینگ | خرید سرنخ فروش و لیست کسب‌وکارها بر اساس صنف و منطقه",
