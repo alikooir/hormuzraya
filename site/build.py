@@ -286,7 +286,7 @@ def home(lang):
 <canvas id="chart" aria-hidden="true"></canvas>
 <div class="wrap">
 <span class="tag"><i></i>{e(t(SITE['park']))}</span>
-<h1>{t(L('برای مسئله‌های کسب‌وکار، <em>راهکار هوشمند</em> می‌سازیم.', 'We build <em>intelligent solutions</em> to business problems.'))}</h1>
+<h1>{t(L('برای مسائل و مشکلات کسب‌وکارها، <em>راهکارهای هوشمند</em> می‌سازیم.', 'We build <em>intelligent solutions</em> to the problems and challenges businesses face.'))}</h1>
 <p class="lead">{e(t(L('راهکارهای هوشمند هرمز رایا با ترکیب هوش مصنوعی، داده و نرم‌افزار، محصولات و راهکارهای اختصاصی می‌سازد: از تحلیل تجارت جهانی و یافتن خریدار خارجی تا ابزار فروش فروشگاه‌ها و ساخت وب‌سایت کسب‌وکارهای کوچک.',
     'Hormoz Raya Smart Solutions combines AI, data and software engineering to build products and custom solutions: from analysing world trade and finding foreign buyers to sales tools for shops and websites for small businesses.')))}</p>
 <div class="cta"><a class="btn solid" href="{pg.link('services/')}">{e(t(L('راهکار برای کسب‌وکار شما', 'A solution for your business')))}</a>
