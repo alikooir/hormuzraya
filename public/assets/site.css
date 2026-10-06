@@ -39,7 +39,7 @@ p{margin:0}
 .top{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 .top .wrap{display:flex;align-items:center;gap:16px;padding-block:12px}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--fg)}
-.brand svg{width:34px;height:34px;flex:none}
+.brand .logo{width:36px;height:36px;flex:none;border-radius:4px;display:block}
 .brand b{font-size:1.15rem;font-weight:800;white-space:nowrap}
 .nav{display:flex;gap:2px;margin-inline-start:auto;flex-wrap:wrap}
 .nav a{color:var(--muted);text-decoration:none;padding:6px 10px;border-radius:6px;font-size:.93rem;font-weight:600}

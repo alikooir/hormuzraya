@@ -66,13 +66,8 @@ class Page:
 
 # ---------------------------------------------------------------- shared chrome
 
-LOGO = """<svg viewBox="0 0 40 40" aria-hidden="true">
-<circle cx="20" cy="20" r="18" fill="none" stroke="var(--sea)" stroke-width="1.5"/>
-<path d="M6 24c5-3 9 3 14 0s9-3 14 0" fill="none" stroke="var(--sea)" stroke-width="1.5" opacity=".5"/>
-<path d="M8 29c5-3 9 3 14 0s8-3 12-1" fill="none" stroke="var(--sea)" stroke-width="1.5" opacity=".3"/>
-<line x1="13" y1="14" x2="25" y2="11" stroke="var(--fg)" stroke-width="1.2"/><line x1="25" y1="11" x2="23" y2="20" stroke="var(--fg)" stroke-width="1.2"/><line x1="13" y1="14" x2="23" y2="20" stroke="var(--fg)" stroke-width="1.2"/>
-<circle cx="13" cy="14" r="2.6" fill="var(--fg)"/><circle cx="25" cy="11" r="2.6" fill="var(--fg)"/><circle cx="23" cy="20" r="3.2" fill="var(--soil)"/>
-</svg>"""
+def logo(pg):
+    return f'<img class="logo" src="{pg.asset("logo-192.png")}" width="36" height="36" alt="">'
 
 
 def org_ld():
@@ -122,8 +117,9 @@ def head(pg, title, desc, ld, og_type="website"):
 <meta property="og:locale" content="{'fa_IR' if pg.lang == 'fa' else 'en_US'}">
 <meta property="og:locale:alternate" content="{'en_US' if pg.lang == 'fa' else 'fa_IR'}">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#0b6b72">
-<link rel="icon" href="{pg.asset('favicon.svg')}" type="image/svg+xml">
+<meta name="theme-color" content="#141413">
+<link rel="icon" href="{pg.asset('favicon-32.png')}" type="image/png" sizes="32x32">
+<link rel="icon" href="{pg.asset('logo-192.png')}" type="image/png" sizes="192x192">
 <link rel="apple-touch-icon" href="{pg.asset('apple-touch-icon.png')}">
 <link rel="preload" href="{pg.asset('fonts/vazirmatn-var.woff2')}" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="{pg.asset('site.css')}">
@@ -142,7 +138,7 @@ def header(pg, other):
     links = "".join(
         f'<a href="{pg.link(key + "/")}"{current if section == key else ""}>{e(pg.t(label))}</a>' for key, label in NAV)
     return f"""<header class="top"><div class="wrap">
-<a class="brand" href="{pg.link('')}" aria-label="{e(pg.t(SITE['name']))}">{LOGO}<b>{e(pg.t(SITE['name']))}</b></a>
+<a class="brand" href="{pg.link('')}" aria-label="{e(pg.t(SITE['name']))}">{logo(pg)}<b>{e(pg.t(SITE['name']))}</b></a>
 <nav class="nav" aria-label="{'منوی اصلی' if pg.lang == 'fa' else 'Main'}">{links}</nav>
 <details class="menu"><summary>{'منو' if pg.lang == 'fa' else 'Menu'}</summary><nav aria-label="{'منو' if pg.lang == 'fa' else 'Menu'}">{links}</nav></details>
 <a class="lang" href="{pg.link(pg.path, other)}" hreflang="{other}" lang="{other}">{'English' if other == 'en' else 'فارسی'}</a>
@@ -158,7 +154,7 @@ def footer(pg):
 <footer class="foot"><div class="wrap">
 <div class="cols">
 <div style="display:grid;gap:10px;align-content:start">
-<a class="brand" href="{pg.link('')}">{LOGO}<b>{e(t(SITE['name']))}</b></a>
+<a class="brand" href="{pg.link('')}">{logo(pg)}<b>{e(t(SITE['name']))}</b></a>
 <p>{e(t(SITE['park']))}</p>
 <p><span class="mono">{e(SITE['phone_display'])}</span><br><span class="mono">{e(SITE['email'])}</span></p>
 </div>
