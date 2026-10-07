@@ -13,9 +13,9 @@ SITE = {
     "name": L("هرمز رایا", "Hormoz Raya"),
     "legal": L("راهکارهای هوشمند هرمز رایا", "Hormoz Raya Smart Solutions"),
     "alt_names": ["Hormuz Raya", "Hormoz Raya", "هرمز رایا", "راهکارهای هوشمند هرمز رایا"],
-    "phone_display": "+98 902 769 8300",
-    "phone_tel": "+989027698300",
-    "email": "alirezaee1983@gmail.com",
+    "phone_display": "0763101",
+    "phone_tel": "0763101",
+    "email": "contact@hormozraya.ir",
     "address": L("بندرعباس، پارک علم و فناوری هرمزگان", "Hormozgan Science & Technology Park, Bandar Abbas, Iran"),
     "park": L("هسته فناور مستقر در پارک علم و فناوری هرمزگان", "Technology core at Hormozgan Science & Technology Park"),
 }
